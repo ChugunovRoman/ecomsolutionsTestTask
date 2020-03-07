@@ -29,7 +29,7 @@ export class Server {
         console.log('Res: ', body.USD);
       }, 1000);
     } catch (error) {
-      console.error('Failed connect to wss://ws.cex.io/ws, ERROR ', error.stack);
+      console.error('Failed get data from https://blockchain.info/ru/ticker, ERROR ', error.stack);
     }
 
     try {
