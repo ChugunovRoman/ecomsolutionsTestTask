@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "../dist",
+    "baseUrl": "..",
+    "sourceMap": false,
+    "strictNullChecks": true,
+    "module": "CommonJS",
+    "target": "ES2020",
+    "allowJs": false
+  },
+  "include": [".", "../@types"],
+  "exclude": ["node_modules", "dist"]
+}

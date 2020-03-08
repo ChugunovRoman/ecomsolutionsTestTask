@@ -1,16 +1,20 @@
 {
   "name": "btc-usd-ticker",
   "version": "0.1.0",
+  "main": "frontend/index.ts",
   "description": "",
   "config": {
     "registry": "4tqrgqe5yrgfd/btc-usd-ticker"
   },
   "scripts": {
     "start": "better-npm-run start",
-    "build": "rm -rf ./dist && tsc",
-    "test": "rm -rf ./dist && jest -i --coverage --silent --forceExit",
+    "serve": "rm -rf dist && parcel serve frontend/index.html",
+    "build": "rm -rf ./dist && run-p build:back build:front",
+    "build:back": "tsc -p ./backend",
+    "build:front": "parcel build frontend/index.html --public-url ./ --out-dir dist/public",
     "docker:build": "docker build --no-cache -t $npm_package_config_registry:$npm_package_version .",
-    "docker:push": "docker push $npm_package_config_registry:$npm_package_version"
+    "docker:push": "docker push $npm_package_config_registry:$npm_package_version",
+    "test": "rm -rf ./dist && jest -i --coverage --silent --forceExit"
   },
   "author": "Chugunov Roman <Zebs-BMK@yandex.ru>",
   "license": "GPL-2.0",
@@ -22,6 +26,10 @@
     "@types/superagent": "^4.1.7",
     "@types/vision": "^5.3.4",
     "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
+    "svelte-preprocess": "^3.3.0",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-svelte": "^4.0.6",
     "ts-jest": "^24.0.2",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
@@ -37,7 +45,8 @@
     "good-console": "^7.1.0",
     "good-squeeze": "^5.1.0",
     "node-crypto-api": "github:ChugunovRoman/node-crypto-api",
-    "superagent": "^5.2.2"
+    "superagent": "^5.2.2",
+    "svelte": "^3.19.2"
   },
   "keywords": [
     "Node.js",
@@ -47,6 +56,9 @@
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
   "betterScripts": {
     "clear": {
       "command": "rm -rf ./dist"

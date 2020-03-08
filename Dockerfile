@@ -13,4 +13,4 @@ ENV NODE_PATH /usr/src/app/dist
 EXPOSE 3000
 
 ENTRYPOINT []
-CMD ["node", "/usr/src/app/dist/index.js"]
+CMD ["node", "/usr/src/app/dist/backend/index.js"]
