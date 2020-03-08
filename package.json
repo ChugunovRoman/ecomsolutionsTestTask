@@ -11,7 +11,7 @@
     "serve": "rm -rf dist && parcel serve frontend/index.html",
     "build": "rm -rf ./dist && run-p build:back build:front",
     "build:back": "tsc -p ./backend",
-    "build:front": "parcel build frontend/index.html --public-url ./ --out-dir dist/public",
+    "build:front": "parcel build frontend/index.html --public-url /public --out-dir dist/public",
     "docker:build": "docker build --no-cache -t $npm_package_config_registry:$npm_package_version .",
     "docker:push": "docker push $npm_package_config_registry:$npm_package_version",
     "test": "rm -rf ./dist && jest -i --coverage --silent --forceExit"
@@ -27,9 +27,10 @@
     "@types/vision": "^5.3.4",
     "jest": "^24.9.0",
     "npm-run-all": "^4.1.5",
-    "svelte-preprocess": "^3.3.0",
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.3.1",
     "parcel-plugin-svelte": "^4.0.6",
+    "svelte-preprocess": "^3.3.0",
     "ts-jest": "^24.0.2",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
@@ -59,6 +60,14 @@
   "browserslist": [
     "last 1 chrome versions"
   ],
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "static",
+        "staticOutDir": "."
+      }
+    ]
+  },
   "betterScripts": {
     "clear": {
       "command": "rm -rf ./dist"

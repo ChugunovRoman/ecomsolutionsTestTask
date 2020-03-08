@@ -7,7 +7,27 @@ export function mainRoutes(server: Hapi.Server): void {
     {
       method: 'GET',
       path: '/',
-      handler: mainController,
+      handler: {
+        file: 'index.html',
+      },
+    },
+    {
+      method: 'GET',
+      path: '/favicon.ico',
+      handler: {
+        file: 'favicon.ico',
+      },
+    },
+    {
+      method: 'GET',
+      path: '/public/{path*}',
+      handler: {
+        directory: {
+          path: '.',
+          redirectToSlash: true,
+          index: true,
+        },
+      },
     },
   ];
 

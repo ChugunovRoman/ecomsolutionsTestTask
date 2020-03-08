@@ -7,7 +7,7 @@ export function forbidden(server: Hapi.Server): void {
       method: '*',
       path: '/{p*}',
       handler: async () => {
-        return Boom.forbidden();
+        return Boom.forbidden('403 Forbidden');
       },
     },
   ];
